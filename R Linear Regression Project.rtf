@@ -1,0 +1,97 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 CourierNewPSMT;\f1\froman\fcharset0 Times-Roman;\f2\fswiss\fcharset0 Helvetica;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red251\green0\blue7;\red0\green0\blue0;
+\red251\green0\blue7;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c0\c0;\cssrgb\c0\c1\c1;
+\cssrgb\c99940\c0\c0;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 > file.choose()
+\f1 \
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 >[1] "/Users/davidwhitmer/Library/Mobile Documents/com~apple~Numbers/Documents/Seoul_Heptathlon.csv\'94\
+> Heptathlon88<-read.csv("Seoul_Heptathlon.csv",row.names=1,header=T)\
+>\cf3 \outl0\strokewidth0  \cf4 boxplot(Hepthalon$score, horizontal = T, col = "lightgray", xlab = "Point Total", cex.lab = 1.25, cex.axis = 1.2, main = "Total Points earned in all seven events", lwd = 2, whisklwd = 1, whisklty = 1, whiskcol = "green")
+\f2\fs32 \cf2 \
+
+\f0\fs24 \cf0 \outl0\strokewidth0 \strokec2 > new_Hepathalon<-Heptathlon88[-25,]\
+>\cf3 \outl0\strokewidth0 \'a0\cf4 pairs(new_Hepathalon, diag.panel = panel.hist, pch = 16, lwd = 2, cex = 0.8, panel = panel.smooth, main = "Scores on Each Event, plus the Final Score")
+\f2\fs32 \cf2 \
+
+\f0\fs24 > Score_Model<-lm(score~hurdles,data=new_Hepathalon)\
+>summary(Score_Model)\
+\
+\pard\pardeftab720\partightenfactor0
+\cf4 Call:
+\f2\fs32 \cf4 \
+
+\f0\fs24 \cf4 lm(formula = score ~ hurdles, data = new_Hepathalon)\
+\
+Residuals:
+\f2\fs32 \cf4 \
+
+\f0\fs24 \cf4 \'a0\'a0\'a0\'a0 Min\'a0\'a0\'a0\'a0\'a0\'a0 1Q\'a0\'a0 Median\'a0\'a0\'a0\'a0\'a0\'a0 3Q\'a0\'a0\'a0\'a0\'a0 Max 
+\f2\fs32 \cf4 \
+
+\f0\fs24 \cf4 -402.45   -116.89\'a0    16.93\'a0   116.57\'a0 281.66 \
+\
+Coefficients:
+\f2\fs32 \cf4 \
+
+\f0\fs24 \cf4 \'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 Estimate Std. Error t value Pr(>|t|)\'a0\'a0\'a0 
+\f2\fs32 \cf4 \
+
+\f0\fs24 \cf4 (Intercept)   17837.29\'a01142.85\'a0   15.61\'a0\'a0 2.20e-13 ***
+\f2\fs32 \cf4 \
+
+\f0\fs24 \cf4 hurdles\'a0\'a0\'a0\'a0\'a0\'a0 -850.77\'a0 83.17\'a0    -10.23\'a0\'a0\'a07.97e-10 ***
+\f2\fs32 \cf4 \
+
+\f0\fs24 \cf4 ---\
+Signif. codes:\'a0 0 \'91***\'92 0.001 \'91**\'92 0.01 \'91*\'92 0.05 \'91.\'92 0.1 \'91 \'92 1\
+\
+Residual standard error: 205.2 on 22 degrees of freedom
+\f2\fs32 \cf4 \
+
+\f0\fs24 \cf4 Multiple R-squared:\'a0 0.8263,\'a0\'a0\'a0\'a0\'a0 Adjusted R-squared:\'a0 0.8184 
+\f2\fs32 \cf4 \
+
+\f0\fs24 \cf4 F-statistic: 104.6 on 1 and 22 DF,\'a0 p-value: 7.972e-10\
+\
+\
+> plot(score~hurdles, data = new_Hepathalon, pch = 16, main = "Scatterplot of hurdles and score", xlab = \'93hurdles\'94, ylab = \'93score\'94, cex.lab = 1.2, cex.axis = 1.2)
+\f2\fs32 \cf4 \
+
+\f0\fs24 \cf4 > abline(scoremodel, lwd = 2)\
+\
+\
+>new_hepathalon[1,c(\'93hurdles\'94,\'94score\'94)]\
+				hurdles score\
+Joyner-Kersee (USA)   12.69  7291\
+\
+
+\f2\fs32 \cf2 \
+
+\f0\fs24 ## Predicted Score = 17837.29 - 850.77(12.69) = 7041 Points \
+## Residual = Observed - Expected = 7291 - 7041 = 250 points\
+## Joyner-Kersee over-performed by 250. \
+>sd(Score_Model$residuals)\
+[1] 200.7231\
+
+\f2\fs32 \
+\
+\
+\
+\
+
+\f0\fs24 \cf3 \'a0
+\f2\fs32 \cf2 \
+\
+
+\f0\fs24 \cf3 \'a0
+\f2\fs32 \cf2 \
+}
